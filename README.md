@@ -1,2 +1,3 @@
 <h2>Canberk Varli portfolio</h2>
-[Portfolio](https://www.canberkvarli.com/)
+
+[Live](https://www.canberkvarli.com/) for more!
