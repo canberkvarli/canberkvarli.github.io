@@ -29,8 +29,8 @@ const Contact = () => {
     //click on create a new template then click on save.
     emailjs
       .send(
-        'serviceID', // paste your ServiceID here (you'll get one when your service is created).
-        'templateID', // paste your TemplateID here (you'll find it under email templates).
+        'service_ilo2eni', // paste your ServiceID here (you'll get one when your service is created).
+        'template_nx50o0f', // paste your TemplateID here (you'll find it under email templates).
         {
           from_name: form.name,
           to_name: 'Canberk Varli', // put your name here.
@@ -38,7 +38,7 @@ const Contact = () => {
           to_email: 'canberkvarli@gmail.com', //put your email here.
           message: form.message,
         },
-        'yourpublickey' //paste your Public Key here. You'll get it in your profile section.
+        '2MPqeYI0oWLX-hclP' //paste your Public Key here. You'll get it in your profile section.
       )
       .then(
         () => {

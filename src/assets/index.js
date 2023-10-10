@@ -45,12 +45,9 @@ import kelhel from './company/kelhel.png';
 import microverse from './company/microverse.png';
 import microsoft from './company/microsoft.png';
 
-import komikult from './projects/komikult.png';
-import leaderboard from './projects/leaderboard.png';
-import math from './projects/math-magicians.png';
-import movie from './projects/movie-metro.png';
-import nyeusi from './projects/nyeusi.png';
-import space from './projects/space-hub.png';
+import sonar from './projects/sonar/homepage.png';
+import forestlibrary from './projects/forestlibrary/FLMainPage.png';
+import spark from './projects/spark/homepage.png';
 
 export {
   bwmap,
@@ -87,15 +84,12 @@ export {
   redux,
   tailwind,
   typescript,
-  komikult,
-  leaderboard,
-  math,
-  movie,
-  nyeusi,
-  space,
   coverhunt,
   dcc,
   kelhel,
   microverse,
   microsoft,
+  sonar,
+  forestlibrary,
+  spark,
 };
