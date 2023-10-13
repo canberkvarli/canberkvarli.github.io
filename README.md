@@ -48,4 +48,4 @@ npm run preview
 - Twitter: [@varlicanberk](https://twitter.com/varlicanberk)
 - LinkedIn: [Canberk Varli](https://www.linkedin.com/in/canberkvarli/)
 
-## Specil thanks to Shaquille Ndunda for this template
+### Specil thanks to Shaquille Ndunda for this template
