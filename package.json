@@ -2,7 +2,7 @@
   "name": "canberk",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/canberkvarli/canberkvarli.github.io",
+  "homepage": "https://canberkvarli.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
