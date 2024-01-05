@@ -3,6 +3,7 @@ import {
   backend,
   ux,
   javascript,
+  ruby,
   typescript,
   html,
   css,
@@ -25,6 +26,8 @@ import {
   kelhel,
   microverse,
   microsoft,
+  python,
+  flask,
 } from '../assets';
 
 export const navLinks = [
@@ -63,6 +66,10 @@ const technologies = [
     icon: rubyrails,
   },
   {
+    name: 'Ruby',
+    icon: ruby
+  },
+  {
     name: "Hotwire",
     icon: hotwire,
   },
@@ -73,6 +80,14 @@ const technologies = [
   {
     name: 'JavaScript',
     icon: javascript,
+  },
+  {
+    name: 'Python',
+    icon: python,
+  },
+  {
+    name: 'Flask',
+    icon: flask,
   },
   {
     name: 'React JS',
