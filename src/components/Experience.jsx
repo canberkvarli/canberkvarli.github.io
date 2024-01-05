@@ -102,7 +102,7 @@ const Experience = () => {
               ease-in-out"
               onClick={() =>
                 window.open(
-                  'src/assets/personal/Resume.pdf',
+                  '/canberkvarli.github.io/src/assets/personal/Resume.pdf',
                   '_blank'
                 )
               }
