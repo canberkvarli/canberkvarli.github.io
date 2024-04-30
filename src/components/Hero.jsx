@@ -45,9 +45,10 @@ const Hero = () => {
                 Canberk
               </span>
             </h1>
-            {/* <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
-              Software Engineer, aviator, explorer<br className="sm:block hidden" />
-            </p> */}
+            <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
+              Uniting Vision with Simplicity
+              <br className="sm:block hidden" />
+            </p>
           </div>
           <div
             className="w-screen flex flex-col items-start 
@@ -83,8 +84,8 @@ const Hero = () => {
         <div>
           <img
             className="absolute bottom-0 ml-[50vw] 
-            lg:ml-[60vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[83vw]
-            sm:h-[90vh] md:h-[70vh] xl:h-[80vh]"
+            lg:ml-[50vw] md:ml-[50vw] xmd:ml-[50vw] 2xl:ml-[50vw]
+            sm:h-[90vh] md:h-[70vh] xl:h-[75vh]"
             src={canberk}
             alt="canberk"
           />
