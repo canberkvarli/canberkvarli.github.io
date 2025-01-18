@@ -174,8 +174,8 @@ const projects = [
       },
     ],
     image: forestlibrary,
-    repo: "https://github.com/lamjay415/ForestLibrary",
-    demo: "#",
+    repo: "https://github.com/canberkvarli/forest-library-v2",
+    demo: "https://forest-library-v2.onrender.com",
   },
   {
     id: "project-3",
