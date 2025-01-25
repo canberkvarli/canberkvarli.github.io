@@ -48,6 +48,7 @@ import dcc from "./company/dcc.png";
 import kelhel from "./company/kelhel.png";
 import microverse from "./company/microverse.png";
 import microsoft from "./company/microsoft.png";
+import prevail from "./company/prevail.png";
 
 import sonar from "./projects/sonar/homepage.png";
 import forestlibrary from "./projects/forestlibrary/FLMainPage.png";
@@ -100,4 +101,5 @@ export {
   python,
   flask,
   nextjs,
+  prevail,
 };

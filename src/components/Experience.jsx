@@ -94,7 +94,7 @@ const Experience = () => {
             <a href={canberk_resume}
               target="_blank"
               download="Canberk-Resume"
-              >
+            >
               <button
                 className="live-demo flex justify-between 
                 sm:text-[18px] text-[14px] text-timberWolf 
@@ -104,12 +104,6 @@ const Experience = () => {
                 sm:mt-[22px] mt-[16px] hover:bg-battleGray 
                 hover:text-eerieBlack transition duration-[0.2s] 
                 ease-in-out"
-                // onClick={() =>
-                //   window.open(
-                //     'src/assets/personal/Resume.pdf',
-                //     '_blank'
-                //   )
-                // }
                 onMouseOver={() => {
                   document
                     .querySelector('.download-btn')

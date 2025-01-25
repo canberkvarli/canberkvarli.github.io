@@ -29,6 +29,7 @@ import {
   python,
   flask,
   nextjs,
+  prevail,
 } from "../assets";
 
 export const navLinks = [
@@ -127,7 +128,7 @@ const experiences = [
   {
     title: "Jr. Software Engineer",
     company_name: "Prevail Legal",
-    icon: microverse,
+    icon: prevail,
     iconBg: "#333333",
     date: "Mar 2022 - Oct 2023",
   },
