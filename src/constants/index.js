@@ -28,6 +28,7 @@ import {
   microsoft,
   python,
   flask,
+  nextjs,
 } from "../assets";
 
 export const navLinks = [
@@ -68,6 +69,10 @@ const technologies = [
   {
     name: "Ruby",
     icon: ruby,
+  },
+  {
+    name: "NextJs",
+    icon: nextjs,
   },
   {
     name: "Hotwire",

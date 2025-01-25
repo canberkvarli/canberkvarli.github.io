@@ -45,7 +45,7 @@ const Hero = () => {
                 Canberk
               </span>
             </h1>
-            <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
+            <p className={`${styles.heroSubText} mt-2 text-eerieBlack font-mono`}>
               Uniting Vision with Simplicity
               <br className="sm:block hidden" />
             </p>
