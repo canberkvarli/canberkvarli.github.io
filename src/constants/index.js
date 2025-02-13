@@ -130,7 +130,7 @@ const experiences = [
     company_name: "Prevail Legal",
     icon: prevail,
     iconBg: "#333333",
-    date: "Mar 2022 - Oct 2023",
+    date: "Sep 2021 - May 2024",
   },
 ];
 
