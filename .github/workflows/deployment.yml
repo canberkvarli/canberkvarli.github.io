@@ -15,6 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0 # Fetch full history for proper merging
           persist-credentials: true
 
       - name: Set up Node.js
@@ -43,4 +44,5 @@ jobs:
           git config user.email "github-actions@github.com"
           git add docs
           git commit -m "Deploy updated portfolio" || echo "No changes to commit"
+          git pull origin main --rebase
           git push
