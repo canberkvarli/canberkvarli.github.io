@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # Fetch full history for proper merging
+          fetch-depth: 0 # Fetch full history for proper merging
           persist-credentials: true
 
       - name: Set up Node.js
@@ -35,8 +35,7 @@ jobs:
           rm -rf docs
           mkdir docs
           cp -R dist/* docs/
-          # If your custom domain needs a CNAME, ensure docs/CNAME exists:
-          # echo "canberkvarli.com" > docs/CNAME
+          echo "canberkvarli.com" > docs/CNAME
 
       - name: Commit and push deployment
         run: |
