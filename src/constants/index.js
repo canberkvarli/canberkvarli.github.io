@@ -18,6 +18,7 @@ import {
   rubyrails,
   hotwire,
   graphql,
+  eunoia,
   sonar,
   spark,
   forestlibrary,
@@ -137,6 +138,28 @@ const experiences = [
 const projects = [
   {
     id: "project-1",
+    name: "Eunoia",
+    description: "My Mind clone",
+    tags: [
+      {
+        name: "NextJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Prisma",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: eunoia,
+    repo: "https://github.com/canberkvarli/eunoia",
+    demo: "https://eunoia-two.vercel.app",
+  },
+  {
+    id: "project-2",
     name: "Sonar",
     description: "A SoundCloud clone",
     tags: [
@@ -158,7 +181,7 @@ const projects = [
     demo: "https://sonar-v2.onrender.com",
   },
   {
-    id: "project-2",
+    id: "project-3",
     name: "Forest Library",
     description: "A social network built with a team",
     tags: [
@@ -184,7 +207,7 @@ const projects = [
     demo: "https://forest-library-v2.onrender.com",
   },
   {
-    id: "project-3",
+    id: "project-4",
     name: "Spark",
     description: `MIDI Keyboard Synthesizer on a single webpage`,
     tags: [
