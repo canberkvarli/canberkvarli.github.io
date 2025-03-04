@@ -53,7 +53,7 @@ import prevail from "./company/prevail.png";
 import sonar from "./projects/sonar/homepage.png";
 import forestlibrary from "./projects/forestlibrary/FLMainPage.png";
 import spark from "./projects/spark/homepage.png";
-import eunoia from "./projects/eunoia/Homepage.png";
+import eunoia from "./projects/eunoia/HomePage.png";
 
 export {
   bwmap,
