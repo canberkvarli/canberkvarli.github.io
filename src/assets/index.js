@@ -33,7 +33,6 @@ import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
-import typescript from "./tech/typescript.png";
 import graphql from "./tech/graphql.png";
 import postgresql from "./tech/postgresql.png";
 import rubyrails from "./tech/rubyrails.png";
@@ -41,7 +40,10 @@ import ruby from "./tech/ruby.png";
 import hotwire from "./tech/hotwire.png";
 import python from "./tech/python.png";
 import flask from "./tech/flask.png";
-import nextjs from "./tech/nextjs.svg";
+import nextjs from "./tech/nextjs.png";
+import typescript from "./tech/typescript.png";
+import llm from "./tech/llm.png";
+import langchain from "./tech/langchain.png";
 
 import coverhunt from "./company/coverhunt.png";
 import dcc from "./company/dcc.png";
@@ -54,6 +56,7 @@ import sonar from "./projects/sonar/homepage.png";
 import forestlibrary from "./projects/forestlibrary/FLMainPage.png";
 import spark from "./projects/spark/homepage.png";
 import eunoia from "./projects/eunoia/HomePage.png";
+import peacy from "./projects/peacy/peacy.png";
 
 export {
   bwmap,
@@ -98,10 +101,13 @@ export {
   sonar,
   forestlibrary,
   spark,
+  peacy,
   eunoia,
   ruby,
   python,
   flask,
   nextjs,
   prevail,
+  llm,
+  langchain,
 };

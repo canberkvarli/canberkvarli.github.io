@@ -18,6 +18,7 @@ import {
   rubyrails,
   hotwire,
   graphql,
+  peacy,
   eunoia,
   sonar,
   spark,
@@ -31,6 +32,8 @@ import {
   flask,
   nextjs,
   prevail,
+  llm,
+  langchain,
 } from "../assets";
 
 export const navLinks = [
@@ -69,32 +72,28 @@ const technologies = [
     icon: rubyrails,
   },
   {
-    name: "Ruby",
-    icon: ruby,
-  },
-  {
     name: "NextJs",
     icon: nextjs,
   },
   {
-    name: "Hotwire",
-    icon: hotwire,
+    name: "Node JS",
+    icon: nodejs,
   },
   {
-    name: "HTML",
-    icon: html,
+    name: "Typescript",
+    icon: typescript,
   },
   {
-    name: "JavaScript",
-    icon: javascript,
+    name: "llm",
+    icon: llm,
+  },
+  {
+    name: "Langchain",
+    icon: langchain,
   },
   {
     name: "Python",
     icon: python,
-  },
-  {
-    name: "Flask",
-    icon: flask,
   },
   {
     name: "React JS",
@@ -105,12 +104,16 @@ const technologies = [
     icon: redux,
   },
   {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
     name: "postgresql",
     icon: postgresql,
+  },
+  {
+    name: "HTML",
+    icon: html,
+  },
+  {
+    name: "Flask",
+    icon: flask,
   },
   {
     name: "docker",
@@ -160,6 +163,28 @@ const projects = [
   },
   {
     id: "project-2",
+    name: "Peacy",
+    description: "AI Agent for group chat mediation",
+    tags: [
+      {
+        name: "Python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "LangChain",
+        color: "green-text-gradient",
+      },
+      {
+        name: "OpenAI",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: peacy,
+    repo: "https://github.com/canberkvarli/peacy",
+    demo: "#"
+  },
+  {
+    id: "project-3",
     name: "Sonar",
     description: "A SoundCloud clone",
     tags: [
@@ -181,7 +206,7 @@ const projects = [
     demo: "https://sonar-v2.onrender.com",
   },
   {
-    id: "project-3",
+    id: "project-4",
     name: "Forest Library",
     description: "A social network built with a team",
     tags: [
@@ -207,7 +232,7 @@ const projects = [
     demo: "https://forest-library-v2.onrender.com",
   },
   {
-    id: "project-4",
+    id: "project-5",
     name: "Spark",
     description: `MIDI Keyboard Synthesizer on a single webpage`,
     tags: [

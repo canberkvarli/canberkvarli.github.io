@@ -37,14 +37,13 @@ const About = () => {
       <motion.p
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-        My name is Canberk Varli, and I'm a software engineer experienced in building web applications using Ruby,
-        TypeScript, RoR, React/Redux, Hotwire, React Native, Postgres, Node.js, Mongoose, and Express.js, with expertise in MongoDB.
-        I successfully completed the curriculum at App Academy, a highly selective and immersive Software Engineering bootcamp.
-        During this program, I dedicated over 100 hours per week to
-        enhancing my skills and exposing myself to a myriad of cutting-edge technologies.
-        Following that, I worked at Prevail Legal, the first AI-assisted testimony management and video conferencing platform purpose-built for legal proceedings.
-        In this role, I provided various software solutions for two years.
-        Apart from coding, I find joy in being in nature, climbing mountains, and catching as many waves as I can.
+        I'm a software engineer passionate about building intelligent, intuitive systems.
+        My recent work integrates LLMs, vector databases, and real-time architectures to create thoughtful web experiences.
+        At Prevail Legal, I helped scale an AI-powered legal transcription platform, enhancing search and performance across complex datasets.
+        I’ve built PEACY, an empathetic AI group chat mediator using OpenAI, Groq, and ChromaDB, and Eunoia, a mymind.com-inspired note taking platform.
+        My stack includes TypeScript, Python, Ruby on Rails, React/Next.js, and modern backend tooling like Express.js, PostgreSQL, MongoDB, and LangChain.
+        I care about writing clean, human-centered code—and building tech that feels calm and useful.
+        Outside of tech, I recharge by climbing mountains, surfing waves, and immersing myself in nature.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">
