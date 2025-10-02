@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Canberk Varli</title>
     <style>
         body {
@@ -162,6 +162,19 @@
             align-items: center;
             border-bottom: 3px solid #ff6600;
             cursor: move;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            transition: background-color 0.2s;
+        }
+        
+        .title-bar:hover {
+            background: #ff7700;
+        }
+        
+        .title-bar:active {
+            background: #ff8800;
         }
         
         .title-text {
@@ -315,6 +328,87 @@
         .window.dragging {
             opacity: 0.8;
         }
+        
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            .desktop-icons {
+                padding: 10px;
+            }
+            
+            .icon {
+                margin-bottom: 20px;
+            }
+            
+            .icon-box {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .icon-label {
+                font-size: 11px;
+            }
+            
+            .window {
+                min-width: 90vw;
+                max-width: 95vw;
+                left: 2.5vw !important;
+                top: 10vh !important;
+            }
+            
+            .window-content {
+                max-height: 60vh;
+                padding: 15px;
+            }
+            
+            .logo-link {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .logo-container {
+                padding: 8px 12px;
+            }
+            
+            .logo-img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .logo-text {
+                font-size: 12px;
+            }
+            
+            .coffee-btn {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+            
+            .coffee-btn span:first-child {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .window {
+                min-width: 95vw;
+                left: 2.5vw !important;
+            }
+            
+            .window-content {
+                padding: 10px;
+            }
+            
+            .project-item {
+                padding: 10px;
+            }
+            
+            .contact-info {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -341,22 +435,22 @@
     
     <div class="desktop">
         <div class="desktop-icons">
-            <div class="icon" style="top: 20px; left: 20px;" onmousedown="startIconDrag(event, this)">
+            <div class="icon" style="top: 20px; left: 20px;" onmousedown="startIconDrag(event, this)" ontouchstart="startIconDrag(event, this)">
                 <div class="icon-box">👋</div>
                 <div class="icon-label">About</div>
             </div>
             
-            <div class="icon" style="top: 20px; left: 140px;" onmousedown="startIconDrag(event, this)">
+            <div class="icon" style="top: 20px; left: 140px;" onmousedown="startIconDrag(event, this)" ontouchstart="startIconDrag(event, this)">
                 <div class="icon-box">💻</div>
                 <div class="icon-label">Projects</div>
             </div>
             
-            <div class="icon" style="top: 20px; left: 260px;" onmousedown="startIconDrag(event, this)">
+            <div class="icon" style="top: 20px; left: 260px;" onmousedown="startIconDrag(event, this)" ontouchstart="startIconDrag(event, this)">
                 <div class="icon-box">📄</div>
                 <div class="icon-label">Resume</div>
             </div>
             
-            <div class="icon" style="top: 20px; left: 380px;" onmousedown="startIconDrag(event, this)">
+            <div class="icon" style="top: 20px; left: 380px;" onmousedown="startIconDrag(event, this)" ontouchstart="startIconDrag(event, this)">
                 <div class="icon-box">📧</div>
                 <div class="icon-label">Contact</div>
             </div>
@@ -365,10 +459,10 @@
     
     <!-- About Window -->
     <div id="about-window" class="window" style="top: 100px; left: 150px;">
-        <div class="title-bar" onmousedown="startDrag(event, 'about-window')">
+        <div class="title-bar" onmousedown="startDrag(event, 'about-window')" ontouchstart="startDrag(event, 'about-window')">
             <div class="title-text">About.exe</div>
             <div class="window-buttons">
-                <div class="window-btn" onclick="closeWindow('about-window')">X</div>
+                <div class="window-btn" onclick="closeWindow('about-window')" ontouchend="closeWindow('about-window')">X</div>
             </div>
         </div>
         <div class="window-content">
@@ -399,10 +493,10 @@
     
     <!-- Projects Window -->
     <div id="projects-window" class="window" style="top: 120px; left: 200px;">
-        <div class="title-bar" onmousedown="startDrag(event, 'projects-window')">
+        <div class="title-bar" onmousedown="startDrag(event, 'projects-window')" ontouchstart="startDrag(event, 'projects-window')">
             <div class="title-text">Projects.exe</div>
             <div class="window-buttons">
-                <div class="window-btn" onclick="closeWindow('projects-window')">X</div>
+                <div class="window-btn" onclick="closeWindow('projects-window')" ontouchend="closeWindow('projects-window')">X</div>
             </div>
         </div>
         <div class="window-content">
@@ -463,10 +557,10 @@
     
     <!-- Resume Window -->
     <div id="resume-window" class="window" style="top: 140px; left: 250px;">
-        <div class="title-bar" onmousedown="startDrag(event, 'resume-window')">
+        <div class="title-bar" onmousedown="startDrag(event, 'resume-window')" ontouchstart="startDrag(event, 'resume-window')">
             <div class="title-text">Resume.exe</div>
             <div class="window-buttons">
-                <div class="window-btn" onclick="closeWindow('resume-window')">X</div>
+                <div class="window-btn" onclick="closeWindow('resume-window')" ontouchend="closeWindow('resume-window')">X</div>
             </div>
         </div>
         <div class="window-content">
@@ -527,10 +621,10 @@
     
     <!-- Contact Window -->
     <div id="contact-window" class="window" style="top: 160px; left: 300px;">
-        <div class="title-bar" onmousedown="startDrag(event, 'contact-window')">
+        <div class="title-bar" onmousedown="startDrag(event, 'contact-window')" ontouchstart="startDrag(event, 'contact-window')">
             <div class="title-text">Contact.exe</div>
             <div class="window-buttons">
-                <div class="window-btn" onclick="closeWindow('contact-window')">X</div>
+                <div class="window-btn" onclick="closeWindow('contact-window')" ontouchend="closeWindow('contact-window')">X</div>
             </div>
         </div>
         <div class="window-content">
@@ -572,6 +666,7 @@
         let isDragging = false;
         let startX = 0;
         let startY = 0;
+        let isTouch = false;
         
         // Map icons to their windows
         const iconWindowMap = {
@@ -593,10 +688,20 @@
         
         function startDrag(e, windowId) {
             e.stopPropagation();
+            e.preventDefault();
             draggedWindow = document.getElementById(windowId);
             const rect = draggedWindow.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
+            
+            if (e.type === 'touchstart') {
+                isTouch = true;
+                offsetX = e.touches[0].clientX - rect.left;
+                offsetY = e.touches[0].clientY - rect.top;
+            } else {
+                isTouch = false;
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+            }
+            
             draggedWindow.classList.add('dragging');
             bringToFront(draggedWindow);
         }
@@ -606,12 +711,25 @@
             e.stopPropagation();
             
             draggedIcon = iconEl;
-            startX = e.clientX;
-            startY = e.clientY;
             
-            const rect = iconEl.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
+            if (e.type === 'touchstart') {
+                isTouch = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                
+                const rect = iconEl.getBoundingClientRect();
+                offsetX = e.touches[0].clientX - rect.left;
+                offsetY = e.touches[0].clientY - rect.top;
+            } else {
+                isTouch = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                
+                const rect = iconEl.getBoundingClientRect();
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+            }
+            
             isDragging = false;
         }
         
@@ -625,15 +743,25 @@
             windowEl.style.zIndex = maxZ + 1;
         }
         
-        document.addEventListener('mousemove', (e) => {
+        function handleMove(e) {
+            let clientX, clientY;
+            
+            if (e.type === 'touchmove') {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            
             if (draggedWindow) {
-                draggedWindow.style.left = (e.clientX - offsetX) + 'px';
-                draggedWindow.style.top = (e.clientY - offsetY) + 'px';
+                draggedWindow.style.left = (clientX - offsetX) + 'px';
+                draggedWindow.style.top = (clientY - offsetY) + 'px';
             }
             
             if (draggedIcon) {
-                const moveX = Math.abs(e.clientX - startX);
-                const moveY = Math.abs(e.clientY - startY);
+                const moveX = Math.abs(clientX - startX);
+                const moveY = Math.abs(clientY - startY);
                 
                 // If moved more than 5px, consider it a drag
                 if (moveX > 5 || moveY > 5) {
@@ -642,13 +770,16 @@
                 }
                 
                 if (isDragging) {
-                    draggedIcon.style.left = (e.clientX - offsetX) + 'px';
-                    draggedIcon.style.top = (e.clientY - offsetY) + 'px';
+                    draggedIcon.style.left = (clientX - offsetX) + 'px';
+                    draggedIcon.style.top = (clientY - offsetY) + 'px';
                 }
             }
-        });
+        }
         
-        document.addEventListener('mouseup', (e) => {
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('touchmove', handleMove, { passive: false });
+        
+        function handleEnd(e) {
             if (draggedWindow) {
                 draggedWindow.classList.remove('dragging');
                 draggedWindow = null;
@@ -670,7 +801,10 @@
                 draggedIcon = null;
                 isDragging = false;
             }
-        });
+        }
+        
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('touchend', handleEnd);
         
         // Click window to bring to front
         document.querySelectorAll('.window').forEach(win => {
