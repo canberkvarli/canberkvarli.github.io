@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canberk Varli</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
+        
+        .desktop {
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .logo-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0a0a0a;
+            border: 3px solid #ff6600;
+            padding: 10px 15px;
+            box-shadow: 3px 3px 0px #ff6600;
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            color: #ff6600;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .coffee-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: #ff6600;
+            color: #000;
+            padding: 12px 20px;
+            border: 3px solid #ff6600;
+            box-shadow: 3px 3px 0px #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        .coffee-btn span:first-child {
+            font-size: 35px;
+        }
+        
+        .coffee-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 0px #000;
+        }
+        
+        .coffee-btn:active {
+            transform: translateY(0);
+            box-shadow: 2px 2px 0px #000;
+        }
+        
+        .desktop-icons {
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .icon {
+            cursor: move;
+            text-align: center;
+            transition: transform 0.1s;
+            user-select: none;
+            position: absolute;
+        }
+        
+        .icon.dragging {
+            opacity: 0.7;
+            z-index: 9999;
+        }
+        
+        .icon:hover .icon-box {
+            background-color: #1a1a1a;
+            box-shadow: 5px 5px 0px #ff6600;
+        }
+        
+        .icon:active {
+            transform: scale(0.95);
+        }
+        
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background-color: #0a0a0a;
+            border: 3px solid #ff6600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 32px;
+            box-shadow: 3px 3px 0px #ff6600;
+            transition: all 0.2s;
+        }
+        
+        .icon-label {
+            color: #ff6600;
+            font-size: 13px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px #000;
+        }
+        
+        .window {
+            position: absolute;
+            background-color: #0a0a0a;
+            border: 3px solid #ff6600;
+            box-shadow: 5px 5px 0px #ff6600;
+            min-width: 400px;
+            max-width: 800px;
+            display: none;
+            flex-direction: column;
+            z-index: 1;
+        }
+        
+        .window.active {
+            display: flex;
+        }
+        
+        .title-bar {
+            background: #ff6600;
+            color: #000;
+            padding: 6px 8px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #ff6600;
+            cursor: move;
+        }
+        
+        .title-text {
+            font-size: 14px;
+        }
+        
+        .window-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .window-btn {
+            width: 18px;
+            height: 18px;
+            background-color: #0a0a0a;
+            border: 2px solid #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .window-btn:hover {
+            background-color: #ff6600;
+            color: #000;
+        }
+        
+        .window-btn:active {
+            transform: scale(0.9);
+        }
+        
+        .window-content {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 70vh;
+            color: #fff;
+        }
+        
+        .window-content h2 {
+            margin-top: 0;
+            color: #ff6600;
+            font-size: 24px;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 10px;
+        }
+        
+        .window-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .project-item {
+            border: 2px solid #ff6600;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #0a0a0a;
+        }
+        
+        .project-item h3 {
+            margin: 0 0 5px 0;
+            color: #ff6600;
+        }
+        
+        .project-tech {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .project-links a {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #ff6600;
+            border: 2px solid #000;
+            color: #000;
+            text-decoration: none;
+            margin-right: 8px;
+            margin-top: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 2px 2px 0px #000;
+        }
+        
+        .project-links a:hover {
+            background-color: #cc5500;
+        }
+        
+        .project-links a:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+        
+        .contact-info {
+            background-color: #0a0a0a;
+            border: 2px solid #ff6600;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: #ff6600;
+            display: block;
+            margin: 8px 0;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .experience-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #ff6600;
+        }
+        
+        .experience-item h3 {
+            margin: 0;
+            color: #ff6600;
+        }
+        
+        .experience-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+        
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .skill-line {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        
+        .skill-line strong {
+            color: #ff6600;
+        }
+        
+        /* Draggable functionality */
+        .window.dragging {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- FullCircle Logo -->
+    <a href="https://joinfullcircle.app" target="_blank" class="logo-link" title="Check out fullcircle - Join the waitlist!">
+        <div class="logo-container">
+            <svg class="logo-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="250" cy="250" r="200" fill="none" stroke="#ff6600" stroke-width="20"/>
+                <circle cx="250" cy="250" r="150" fill="none" stroke="#ff6600" stroke-width="15"/>
+                <path d="M 150 250 Q 150 150, 250 150" fill="none" stroke="#ff6600" stroke-width="15"/>
+                <circle cx="180" cy="180" r="15" fill="#ff6600"/>
+                <path d="M 100 250 L 80 270 L 80 230 Z" fill="#ff6600"/>
+                <path d="M 400 250 L 420 270 L 420 230 Z" fill="#ff6600"/>
+            </svg>
+            <span class="logo-text">fullcircle</span>
+        </div>
+    </a>
+    
+    <!-- Buy Me a Coffee Button -->
+    <a href="https://buymeacoffee.com/canberkvarli" target="_blank" class="coffee-btn">
+        <span>☕</span>
+        <span>Buy me a coffee</span>
+    </a>
+    
+    <div class="desktop">
+        <div class="desktop-icons">
+            <div class="icon" style="top: 20px; left: 20px;" onmousedown="startIconDrag(event, this)">
+                <div class="icon-box">👋</div>
+                <div class="icon-label">About</div>
+            </div>
+            
+            <div class="icon" style="top: 20px; left: 140px;" onmousedown="startIconDrag(event, this)">
+                <div class="icon-box">💻</div>
+                <div class="icon-label">Projects</div>
+            </div>
+            
+            <div class="icon" style="top: 20px; left: 260px;" onmousedown="startIconDrag(event, this)">
+                <div class="icon-box">📄</div>
+                <div class="icon-label">Resume</div>
+            </div>
+            
+            <div class="icon" style="top: 20px; left: 380px;" onmousedown="startIconDrag(event, this)">
+                <div class="icon-box">📧</div>
+                <div class="icon-label">Contact</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- About Window -->
+    <div id="about-window" class="window" style="top: 100px; left: 150px;">
+        <div class="title-bar" onmousedown="startDrag(event, 'about-window')">
+            <div class="title-text">About.exe</div>
+            <div class="window-buttons">
+                <div class="window-btn" onclick="closeWindow('about-window')">X</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h2>$ cat about.txt</h2>
+            <p>
+                Hey! I'm Canberk, a software engineer based in Berkeley, CA. I love building things that 
+                actually matter to people.
+            </p>
+            <p>
+                Right now, I'm working on <strong style="color: #ff6600;">fullcircle</strong> - a dating and wellness community 
+                app for yogis, meditators, and folks into holistic living. It's my passion project and 
+                we're launching in January 2026!
+            </p>
+            <p>
+                Previously, I worked at <strong style="color: #ff6600;">Prevail Legal</strong> building AI-powered legal tech, 
+                and did an internship at <strong style="color: #ff6600;">Microsoft</strong> back in Turkey.
+            </p>
+            <p>
+                I went to Bahcesehir University in Istanbul for Software Engineering. Fun fact: I also 
+                got pilot training in Budapest because why not? 🛩️
+            </p>
+            <p>
+                When I'm not coding, you'll find me doing yoga, meditating, or thinking about my next 
+                project. I'm all about wellness, mindful living, and building tech that brings people together.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Projects Window -->
+    <div id="projects-window" class="window" style="top: 120px; left: 200px;">
+        <div class="title-bar" onmousedown="startDrag(event, 'projects-window')">
+            <div class="title-text">Projects.exe</div>
+            <div class="window-buttons">
+                <div class="window-btn" onclick="closeWindow('projects-window')">X</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h2>$ ls ~/projects</h2>
+            
+            <div class="project-item">
+                <h3>fullcircle</h3>
+                <div class="project-tech">React Native · Expo · Node.js · Firebase</div>
+                <p>
+                    A dating and wellness community app for people into yoga, meditation, and holistic living. 
+                    Real-time messaging, matching algorithms, the whole deal. Currently in pre-launch!
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/canberkvarli/fullcircle" target="_blank">View Code</a>
+                    <a href="https://joinfullcircle.app" target="_blank">Live Site</a>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <h3>Eunoia</h3>
+                <div class="project-tech">Next.js · Prisma · NextAuth</div>
+                <p>
+                    A MyMind clone for beautiful note-taking. Features OAuth authentication, smooth animations, 
+                    and a clean, minimal design.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/canberkvarli/eunoia" target="_blank">View Code</a>
+                    <a href="https://eunoia-two.vercel.app" target="_blank">Live Demo</a>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <h3>Sonar</h3>
+                <div class="project-tech">Ruby on Rails · React · Redux · AWS S3</div>
+                <p>
+                    A SoundCloud clone where artists can upload and share music. Built with Rails backend, 
+                    React frontend, and AWS S3 for storage.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/canberkvarli/sonar_v2" target="_blank">View Code</a>
+                    <a href="https://sonar-v2.onrender.com" target="_blank">Live Demo</a>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <h3>Peacy</h3>
+                <div class="project-tech">Python · LangChain · ChromaDB · PostgreSQL</div>
+                <p>
+                    An AI mediator for group chats. Uses OpenAI and Groq models to keep conversations 
+                    civil and generate empathetic responses.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/canberkvarli/peacy" target="_blank">View Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Resume Window -->
+    <div id="resume-window" class="window" style="top: 140px; left: 250px;">
+        <div class="title-bar" onmousedown="startDrag(event, 'resume-window')">
+            <div class="title-text">Resume.exe</div>
+            <div class="window-buttons">
+                <div class="window-btn" onclick="closeWindow('resume-window')">X</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h2>$ cat resume.txt</h2>
+            
+            <h3 style="color: #ff6600; margin-top: 20px;">Work Experience</h3>
+            
+            <div class="experience-item">
+                <h3>Software Engineer - Prevail Legal</h3>
+                <div class="experience-date">September 2021 - May 2024 | San Francisco, CA</div>
+                <ul>
+                    <li>Built AI-powered legal transcription platform with Amazon Transcribe</li>
+                    <li>Doubled successful search outcomes and boosted revenue</li>
+                    <li>Optimized Rails controllers and customized Devise authentication</li>
+                    <li>Created CMD+F-style search feature, improved responsiveness by 30%</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Front Desk Manager Assistant - Lawrence Berkeley Guest House</h3>
+                <div class="experience-date">June 2024 - Present | Berkeley, CA</div>
+                <ul>
+                    <li>Streamlined workflows with AutoHotkey scripts, reducing workload by 40%</li>
+                    <li>Managed operations, scheduling, guest relations, and merchandise sales</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Software Engineering Intern - Microsoft</h3>
+                <div class="experience-date">Summer 2017 | Istanbul, Turkey</div>
+                <ul>
+                    <li>Built Xamarin cross-platform mobile app showcased to senior leadership</li>
+                    <li>Wrote technical blog posts about ML, Big Data, and IoT</li>
+                </ul>
+            </div>
+            
+            <h3 style="color: #ff6600; margin-top: 30px;">Education</h3>
+            
+            <div class="experience-item">
+                <h3>BS in Software Engineering</h3>
+                <div class="experience-date">Bahcesehir University | Istanbul, Turkey | 2014-2018</div>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Private Pilot Training</h3>
+                <div class="experience-date">Airwin Flight School | Budapest, Hungary | Summer 2019</div>
+            </div>
+            
+            <h3 style="color: #ff6600; margin-top: 30px;">Skills</h3>
+            <div class="skill-line"><strong>Languages:</strong> Ruby, TypeScript, Python, Solidity, HTML/CSS</div>
+            <div class="skill-line"><strong>Frontend:</strong> React, React Native, Next.js, Redux</div>
+            <div class="skill-line"><strong>Backend:</strong> Ruby on Rails, Node.js, Express, Flask</div>
+            <div class="skill-line"><strong>Databases:</strong> PostgreSQL, MongoDB, ChromaDB</div>
+            <div class="skill-line"><strong>Cloud & Tools:</strong> AWS, Docker, Firebase, Render</div>
+            <div class="skill-line"><strong>AI/ML:</strong> OpenAI, LangChain, Groq, Pinecone</div>
+        </div>
+    </div>
+    
+    <!-- Contact Window -->
+    <div id="contact-window" class="window" style="top: 160px; left: 300px;">
+        <div class="title-bar" onmousedown="startDrag(event, 'contact-window')">
+            <div class="title-text">Contact.exe</div>
+            <div class="window-buttons">
+                <div class="window-btn" onclick="closeWindow('contact-window')">X</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h2>$ cat contact.txt</h2>
+            <p>Want to chat about a project, collaboration, or just say hi? Hit me up!</p>
+            
+            <div class="contact-info">
+                <strong style="color: #ff6600;">📧 Email:</strong>
+                <a href="mailto:canberkvarli@gmail.com">canberkvarli@gmail.com</a>
+            </div>
+            
+            <div class="contact-info">
+                <strong style="color: #ff6600;">🐙 GitHub:</strong>
+                <a href="https://github.com/canberkvarli" target="_blank">github.com/canberkvarli</a>
+            </div>
+            
+            <div class="contact-info">
+                <strong style="color: #ff6600;">💼 LinkedIn:</strong>
+                <a href="https://linkedin.com/in/canberkvarli" target="_blank">linkedin.com/in/canberkvarli</a>
+            </div>
+            
+            <div class="contact-info">
+                <strong style="color: #ff6600;">📍 Location:</strong>
+                Berkeley, CA
+            </div>
+            
+            <div class="contact-info">
+                <strong style="color: #ff6600;">📱 Phone:</strong>
+                415-769-8292
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let draggedWindow = null;
+        let draggedIcon = null;
+        let offsetX = 0;
+        let offsetY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        
+        // Map icons to their windows
+        const iconWindowMap = {
+            0: 'about',
+            1: 'projects', 
+            2: 'resume',
+            3: 'contact'
+        };
+        
+        function openWindow(name) {
+            const windowEl = document.getElementById(name + '-window');
+            windowEl.classList.add('active');
+            bringToFront(windowEl);
+        }
+        
+        function closeWindow(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+        
+        function startDrag(e, windowId) {
+            e.stopPropagation();
+            draggedWindow = document.getElementById(windowId);
+            const rect = draggedWindow.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            draggedWindow.classList.add('dragging');
+            bringToFront(draggedWindow);
+        }
+        
+        function startIconDrag(e, iconEl) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            draggedIcon = iconEl;
+            startX = e.clientX;
+            startY = e.clientY;
+            
+            const rect = iconEl.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            isDragging = false;
+        }
+        
+        function bringToFront(windowEl) {
+            const windows = document.querySelectorAll('.window');
+            let maxZ = 1;
+            windows.forEach(w => {
+                const z = parseInt(w.style.zIndex) || 1;
+                if (z > maxZ) maxZ = z;
+            });
+            windowEl.style.zIndex = maxZ + 1;
+        }
+        
+        document.addEventListener('mousemove', (e) => {
+            if (draggedWindow) {
+                draggedWindow.style.left = (e.clientX - offsetX) + 'px';
+                draggedWindow.style.top = (e.clientY - offsetY) + 'px';
+            }
+            
+            if (draggedIcon) {
+                const moveX = Math.abs(e.clientX - startX);
+                const moveY = Math.abs(e.clientY - startY);
+                
+                // If moved more than 5px, consider it a drag
+                if (moveX > 5 || moveY > 5) {
+                    isDragging = true;
+                    draggedIcon.classList.add('dragging');
+                }
+                
+                if (isDragging) {
+                    draggedIcon.style.left = (e.clientX - offsetX) + 'px';
+                    draggedIcon.style.top = (e.clientY - offsetY) + 'px';
+                }
+            }
+        });
+        
+        document.addEventListener('mouseup', (e) => {
+            if (draggedWindow) {
+                draggedWindow.classList.remove('dragging');
+                draggedWindow = null;
+            }
+            
+            if (draggedIcon) {
+                draggedIcon.classList.remove('dragging');
+                
+                // If we didn't drag, open the window (click behavior)
+                if (!isDragging) {
+                    const icons = Array.from(document.querySelectorAll('.icon'));
+                    const iconIndex = icons.indexOf(draggedIcon);
+                    const windowName = iconWindowMap[iconIndex];
+                    if (windowName) {
+                        openWindow(windowName);
+                    }
+                }
+                
+                draggedIcon = null;
+                isDragging = false;
+            }
+        });
+        
+        // Click window to bring to front
+        document.querySelectorAll('.window').forEach(win => {
+            win.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.title-bar') && !e.target.closest('.window-btn')) {
+                    return; // Let drag handle it
+                }
+                bringToFront(win);
+            });
+        });
+    </script>
+</body>
+</html>
