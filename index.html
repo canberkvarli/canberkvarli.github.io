@@ -324,6 +324,29 @@
             color: #ff6600;
         }
         
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: 2px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 3px 3px 0px #000;
+            transition: all 0.2s;
+        }
+        
+        .download-btn:hover {
+            background-color: #cc5500;
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 0px #000;
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 2px 2px 0px #000;
+        }
+        
         /* Draggable functionality */
         .window.dragging {
             opacity: 0.8;
@@ -566,25 +589,64 @@
         <div class="window-content">
             <h2>$ cat resume.txt</h2>
             
-            <h3 style="color: #ff6600; margin-top: 20px;">Work Experience</h3>
-            
-            <div class="experience-item">
-                <h3>Software Engineer - Prevail Legal</h3>
-                <div class="experience-date">September 2021 - May 2024 | San Francisco, CA</div>
-                <ul>
-                    <li>Built AI-powered legal transcription platform with Amazon Transcribe</li>
-                    <li>Doubled successful search outcomes and boosted revenue</li>
-                    <li>Optimized Rails controllers and customized Devise authentication</li>
-                    <li>Created CMD+F-style search feature, improved responsiveness by 30%</li>
-                </ul>
+            <div style="text-align: center; margin-bottom: 20px; padding: 15px; border: 2px solid #ff6600;">
+                <h3 style="color: #ff6600; margin: 0;">Canberk Varli</h3>
+                <p style="margin: 5px 0; color: #999; font-size: 14px;">SOFTWARE ENGINEER | PRODUCT BUILDER | PERFORMER</p>
+                <p style="margin: 5px 0; font-size: 12px;">415-769-8292 | canberkvarli@gmail.com | Berkeley, CA</p>
+                <div style="margin-top: 10px;">
+                    <a href="https://github.com/canberkvarli" target="_blank" style="color: #ff6600; text-decoration: none; margin: 0 8px;">GitHub</a> |
+                    <a href="https://linkedin.com/in/canberkvarli" target="_blank" style="color: #ff6600; text-decoration: none; margin: 0 8px;">LinkedIn</a> |
+                    <a href="/" target="_blank" style="color: #ff6600; text-decoration: none; margin: 0 8px;">Portfolio</a>
+                </div>
             </div>
             
+            <div style="text-align: center; margin-bottom: 20px;">
+                <a href="resume.pdf" download class="download-btn">📥 Download Resume PDF</a>
+            </div>
+            
+            <h3 style="color: #ff6600; margin-top: 20px;">Technical Skills</h3>
+            <div class="skill-line"><strong>Backend:</strong> Ruby on Rails, Express.js, Ruby, Python, RESTful APIs</div>
+            <div class="skill-line"><strong>Frontend:</strong> React Native, Next.js, React.js, TypeScript, Redux, Tailwind CSS</div>
+            <div class="skill-line"><strong>AI/ML:</strong> OpenAI, LangChain, Groq, Pinecone, Prompt Engineering</div>
+            <div class="skill-line"><strong>Databases:</strong> PostgreSQL, MongoDB, Redis, ChromaDB</div>
+            <div class="skill-line"><strong>DevOps & Cloud:</strong> AWS, Docker, Firebase, GCP, GitHub Actions, Render, Expo</div>
+            
+            <h3 style="color: #ff6600; margin-top: 30px;">Projects</h3>
+            
+            <div class="project-item">
+                <h3>Sonar – SoundCloud Clone</h3>
+                <div class="project-tech">Ruby on Rails, React.js, Redux, AWS S3 | Live</div>
+                <p>Built full-stack audio platform for artists with remote track storage via AWS S3 and dynamic waveform rendering. Implemented search functionality and persistent playback for seamless user experience.</p>
+            </div>
+            
+            <div class="project-item">
+                <h3>Eunoia – Dynamic Note-Taking Platform</h3>
+                <div class="project-tech">Next.js, Prisma, NextAuth, Tailwind CSS | Live</div>
+                <p>Built full-stack note-taking platform with secure OAuth authentication and responsive design. Implemented smooth animations and intuitive note organization with real-time search.</p>
+            </div>
+            
+            <div class="project-item">
+                <h3>Peacy – AI Agent Mediator for Group Chats</h3>
+                <div class="project-tech">Python, LangChain, ChromaDB, PostgreSQL | Code</div>
+                <p>Built AI mediator using OpenAI and Groq LLMs for context-aware responses in group conversations. Implemented persistent conversation memory with ChromaDB vector database for semantic search and personalized interactions. Automated conversation summarization and sentiment analysis using background job processing.</p>
+            </div>
+            
+            <div class="project-item">
+                <h3>Fullcircle – Wellness Community & Dating Platform</h3>
+                <div class="project-tech">React Native, Expo, Node.js, Firebase | Code > Live - Waitlist</div>
+                <p>Founded mobile app connecting yoga, meditation, and wellness practitioners in underserved niche market. Implemented user authentication, real-time Firebase messaging, profile matching, and community features. Built complete end-to-end application with waitlist collecting interest; targeting App Store launch Q1 2026.</p>
+            </div>
+            
+            <h3 style="color: #ff6600; margin-top: 30px;">Work Experience</h3>
+            
             <div class="experience-item">
-                <h3>Front Desk Manager Assistant - Lawrence Berkeley Guest House</h3>
-                <div class="experience-date">June 2024 - Present | Berkeley, CA</div>
+                <h3>Software Engineer - Prevail Legal AI</h3>
+                <div class="experience-date">Sept 2021 – May 2024 | San Francisco, CA</div>
                 <ul>
-                    <li>Streamlined workflows with AutoHotkey scripts, reducing workload by 40%</li>
-                    <li>Managed operations, scheduling, guest relations, and merchandise sales</li>
+                    <li>Integrated Amazon Transcribe API enabling audio legal document transcription and searchable transcript indexing for enterprise law firm clients</li>
+                    <li>Built Rails authentication system with role-based access control using Devise, supporting secure multi-tenant data isolation and regulatory compliance</li>
+                    <li>Redesigned email notification system architecture to reduce delivery failures and improve system reliability</li>
+                    <li>Optimized PostgreSQL queries and implemented Redis caching for document search feature, significantly improving search performance</li>
                 </ul>
             </div>
             
@@ -592,15 +654,15 @@
                 <h3>Software Engineering Intern - Microsoft</h3>
                 <div class="experience-date">Summer 2017 | Istanbul, Turkey</div>
                 <ul>
-                    <li>Built Xamarin cross-platform mobile app showcased to senior leadership</li>
-                    <li>Wrote technical blog posts about ML, Big Data, and IoT</li>
+                    <li>Developed Xamarin cross-platform mobile app showcased to senior leadership</li>
+                    <li>Authored technical blog on emerging technologies (Machine Learning, Big Data, IoT)</li>
                 </ul>
             </div>
             
             <h3 style="color: #ff6600; margin-top: 30px;">Education</h3>
             
             <div class="experience-item">
-                <h3>BS in Software Engineering</h3>
+                <h3>Bachelor of Science in Software Engineering</h3>
                 <div class="experience-date">Bahcesehir University | Istanbul, Turkey | 2014-2018</div>
             </div>
             
@@ -608,14 +670,6 @@
                 <h3>Private Pilot Training</h3>
                 <div class="experience-date">Airwin Flight School | Budapest, Hungary | Summer 2019</div>
             </div>
-            
-            <h3 style="color: #ff6600; margin-top: 30px;">Skills</h3>
-            <div class="skill-line"><strong>Languages:</strong> Ruby, TypeScript, Python, Solidity, HTML/CSS</div>
-            <div class="skill-line"><strong>Frontend:</strong> React, React Native, Next.js, Redux</div>
-            <div class="skill-line"><strong>Backend:</strong> Ruby on Rails, Node.js, Express, Flask</div>
-            <div class="skill-line"><strong>Databases:</strong> PostgreSQL, MongoDB, ChromaDB</div>
-            <div class="skill-line"><strong>Cloud & Tools:</strong> AWS, Docker, Firebase, Render</div>
-            <div class="skill-line"><strong>AI/ML:</strong> OpenAI, LangChain, Groq, Pinecone</div>
         </div>
     </div>
     
