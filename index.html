@@ -146,6 +146,93 @@
             display: none;
             flex-direction: column;
             z-index: 1;
+            overflow: hidden;
+        }
+        
+        .window.resizable {
+            overflow: visible;
+        }
+        
+        .resize-handle {
+            position: absolute;
+            background-color: transparent;
+            z-index: 10;
+        }
+        
+        .resize-handle.se {
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            cursor: se-resize;
+        }
+        
+        .resize-handle.se::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 15px 15px;
+            border-color: transparent transparent #ff6600 transparent;
+        }
+        
+        .resize-handle.s {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            cursor: s-resize;
+        }
+        
+        .resize-handle.e {
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            cursor: e-resize;
+        }
+        
+        .resize-handle.n {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            cursor: n-resize;
+        }
+        
+        .resize-handle.w {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 10px;
+            cursor: w-resize;
+        }
+        
+        .resize-handle.ne {
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            cursor: ne-resize;
+        }
+        
+        .resize-handle.nw {
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            cursor: nw-resize;
+        }
+        
+        .resize-handle.sw {
+            bottom: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            cursor: sw-resize;
         }
         
         .window.active {
@@ -214,6 +301,35 @@
             overflow-y: auto;
             max-height: 70vh;
             color: #fff;
+        }
+        
+        .pdf-container {
+            width: 100%;
+            height: calc(100% - 100px);
+            min-height: 400px;
+            border: 2px solid #ff6600;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .pdf-fallback {
+            padding: 20px;
+            text-align: center;
+            color: #ff6600;
+        }
+        
+        .pdf-fallback a {
+            color: #ff6600;
+            text-decoration: underline;
         }
         
         .window-content h2 {
@@ -382,6 +498,16 @@
             .window-content {
                 max-height: 60vh;
                 padding: 15px;
+            }
+            
+            .pdf-container {
+                height: 60vh;
+            }
+            
+            #resume-window {
+                min-width: 90vw !important;
+                max-width: 95vw !important;
+                min-height: 400px !important;
             }
             
             .logo-link {
@@ -579,98 +705,38 @@
     </div>
     
     <!-- Resume Window -->
-    <div id="resume-window" class="window" style="top: 140px; left: 250px;">
+    <div id="resume-window" class="window resizable" style="top: 140px; left: 250px; min-width: 600px; max-width: 95vw; min-height: 500px; max-height: 95vh; width: 800px; height: 700px;">
         <div class="title-bar" onmousedown="startDrag(event, 'resume-window')" ontouchstart="startDrag(event, 'resume-window')">
             <div class="title-text">Resume.exe</div>
             <div class="window-buttons">
                 <div class="window-btn" onclick="closeWindow('resume-window')" ontouchend="closeWindow('resume-window')">X</div>
             </div>
         </div>
-        <div class="window-content">
-            <h2>$ cat resume.txt</h2>
-            
-            <div style="text-align: center; margin-bottom: 20px; padding: 15px; border: 2px solid #ff6600;">
-                <h3 style="color: #ff6600; margin: 0;">Canberk Varli</h3>
-                <p style="margin: 5px 0; color: #999; font-size: 14px;">SOFTWARE ENGINEER | PRODUCT BUILDER | PERFORMER</p>
-                <p style="margin: 5px 0; font-size: 12px;">415-769-8292 | canberkvarli@gmail.com | Berkeley, CA</p>
-                <div style="margin-top: 10px;">
-                    <a href="https://github.com/canberkvarli" target="_blank" style="color: #ff6600; text-decoration: none; margin: 0 8px;">GitHub</a> |
-                    <a href="https://linkedin.com/in/canberkvarli" target="_blank" style="color: #ff6600; text-decoration: none; margin: 0 8px;">LinkedIn</a> |
-                    <a href="/" target="_blank" style="color: #ff6600; text-decoration: none; margin: 0 8px;">Portfolio</a>
+        <div class="window-content" style="padding: 0; display: flex; flex-direction: column; height: calc(100% - 35px); overflow: hidden;">
+            <div style="padding: 15px; border-bottom: 2px solid #ff6600; background-color: #0a0a0a; flex-shrink: 0;">
+                <h2 style="margin: 0; color: #ff6600;">$ cat resume.pdf</h2>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="resume.pdf" download class="download-btn">📥 Download Resume PDF</a>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-bottom: 20px;">
-                <a href="resume.pdf" download class="download-btn">📥 Download Resume PDF</a>
-            </div>
-            
-            <h3 style="color: #ff6600; margin-top: 20px;">Technical Skills</h3>
-            <div class="skill-line"><strong>Backend:</strong> Ruby on Rails, Express.js, Ruby, Python, RESTful APIs</div>
-            <div class="skill-line"><strong>Frontend:</strong> React Native, Next.js, React.js, TypeScript, Redux, Tailwind CSS</div>
-            <div class="skill-line"><strong>AI/ML:</strong> OpenAI, LangChain, Groq, Pinecone, Prompt Engineering</div>
-            <div class="skill-line"><strong>Databases:</strong> PostgreSQL, MongoDB, Redis, ChromaDB</div>
-            <div class="skill-line"><strong>DevOps & Cloud:</strong> AWS, Docker, Firebase, GCP, GitHub Actions, Render, Expo</div>
-            
-            <h3 style="color: #ff6600; margin-top: 30px;">Projects</h3>
-            
-            <div class="project-item">
-                <h3>Sonar – SoundCloud Clone</h3>
-                <div class="project-tech">Ruby on Rails, React.js, Redux, AWS S3 | Live</div>
-                <p>Built full-stack audio platform for artists with remote track storage via AWS S3 and dynamic waveform rendering. Implemented search functionality and persistent playback for seamless user experience.</p>
-            </div>
-            
-            <div class="project-item">
-                <h3>Eunoia – Dynamic Note-Taking Platform</h3>
-                <div class="project-tech">Next.js, Prisma, NextAuth, Tailwind CSS | Live</div>
-                <p>Built full-stack note-taking platform with secure OAuth authentication and responsive design. Implemented smooth animations and intuitive note organization with real-time search.</p>
-            </div>
-            
-            <div class="project-item">
-                <h3>Peacy – AI Agent Mediator for Group Chats</h3>
-                <div class="project-tech">Python, LangChain, ChromaDB, PostgreSQL | Code</div>
-                <p>Built AI mediator using OpenAI and Groq LLMs for context-aware responses in group conversations. Implemented persistent conversation memory with ChromaDB vector database for semantic search and personalized interactions. Automated conversation summarization and sentiment analysis using background job processing.</p>
-            </div>
-            
-            <div class="project-item">
-                <h3>Fullcircle – Wellness Community & Dating Platform</h3>
-                <div class="project-tech">React Native, Expo, Node.js, Firebase | Code > Live - Waitlist</div>
-                <p>Founded mobile app connecting yoga, meditation, and wellness practitioners in underserved niche market. Implemented user authentication, real-time Firebase messaging, profile matching, and community features. Built complete end-to-end application with waitlist collecting interest; targeting App Store launch Q1 2026.</p>
-            </div>
-            
-            <h3 style="color: #ff6600; margin-top: 30px;">Work Experience</h3>
-            
-            <div class="experience-item">
-                <h3>Software Engineer - Prevail Legal AI</h3>
-                <div class="experience-date">Sept 2021 – May 2024 | San Francisco, CA</div>
-                <ul>
-                    <li>Integrated Amazon Transcribe API enabling audio legal document transcription and searchable transcript indexing for enterprise law firm clients</li>
-                    <li>Built Rails authentication system with role-based access control using Devise, supporting secure multi-tenant data isolation and regulatory compliance</li>
-                    <li>Redesigned email notification system architecture to reduce delivery failures and improve system reliability</li>
-                    <li>Optimized PostgreSQL queries and implemented Redis caching for document search feature, significantly improving search performance</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <h3>Software Engineering Intern - Microsoft</h3>
-                <div class="experience-date">Summer 2017 | Istanbul, Turkey</div>
-                <ul>
-                    <li>Developed Xamarin cross-platform mobile app showcased to senior leadership</li>
-                    <li>Authored technical blog on emerging technologies (Machine Learning, Big Data, IoT)</li>
-                </ul>
-            </div>
-            
-            <h3 style="color: #ff6600; margin-top: 30px;">Education</h3>
-            
-            <div class="experience-item">
-                <h3>Bachelor of Science in Software Engineering</h3>
-                <div class="experience-date">Bahcesehir University | Istanbul, Turkey | 2014-2018</div>
-            </div>
-            
-            <div class="experience-item">
-                <h3>Private Pilot Training</h3>
-                <div class="experience-date">Airwin Flight School | Budapest, Hungary | Summer 2019</div>
+            <div class="pdf-container" style="flex: 1; overflow: hidden;">
+                <iframe class="pdf-viewer" src="resume.pdf#toolbar=1&navpanes=1&scrollbar=1" type="application/pdf" style="width: 100%; height: 100%;">
+                    <div class="pdf-fallback">
+                        <p>Your browser doesn't support PDF viewing.</p>
+                        <p><a href="resume.pdf" download>Click here to download the PDF</a></p>
+                    </div>
+                </iframe>
             </div>
         </div>
+        <!-- Resize handles -->
+        <div class="resize-handle se" onmousedown="startResize(event, 'resume-window', 'se')" ontouchstart="startResize(event, 'resume-window', 'se')"></div>
+        <div class="resize-handle s" onmousedown="startResize(event, 'resume-window', 's')" ontouchstart="startResize(event, 'resume-window', 's')"></div>
+        <div class="resize-handle e" onmousedown="startResize(event, 'resume-window', 'e')" ontouchstart="startResize(event, 'resume-window', 'e')"></div>
+        <div class="resize-handle n" onmousedown="startResize(event, 'resume-window', 'n')" ontouchstart="startResize(event, 'resume-window', 'n')"></div>
+        <div class="resize-handle w" onmousedown="startResize(event, 'resume-window', 'w')" ontouchstart="startResize(event, 'resume-window', 'w')"></div>
+        <div class="resize-handle ne" onmousedown="startResize(event, 'resume-window', 'ne')" ontouchstart="startResize(event, 'resume-window', 'ne')"></div>
+        <div class="resize-handle nw" onmousedown="startResize(event, 'resume-window', 'nw')" ontouchstart="startResize(event, 'resume-window', 'nw')"></div>
+        <div class="resize-handle sw" onmousedown="startResize(event, 'resume-window', 'sw')" ontouchstart="startResize(event, 'resume-window', 'sw')"></div>
     </div>
     
     <!-- Contact Window -->
@@ -721,6 +787,12 @@
         let startX = 0;
         let startY = 0;
         let isTouch = false;
+        let resizingWindow = null;
+        let resizeDirection = null;
+        let startWidth = 0;
+        let startHeight = 0;
+        let startLeft = 0;
+        let startTop = 0;
         
         // Map icons to their windows
         const iconWindowMap = {
@@ -797,6 +869,31 @@
             windowEl.style.zIndex = maxZ + 1;
         }
         
+        function startResize(e, windowId, direction) {
+            e.stopPropagation();
+            e.preventDefault();
+            resizingWindow = document.getElementById(windowId);
+            resizeDirection = direction;
+            const rect = resizingWindow.getBoundingClientRect();
+            
+            startWidth = rect.width;
+            startHeight = rect.height;
+            startLeft = rect.left;
+            startTop = rect.top;
+            
+            if (e.type === 'touchstart') {
+                isTouch = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            } else {
+                isTouch = false;
+                startX = e.clientX;
+                startY = e.clientY;
+            }
+            
+            bringToFront(resizingWindow);
+        }
+        
         function handleMove(e) {
             let clientX, clientY;
             
@@ -806,6 +903,44 @@
             } else {
                 clientX = e.clientX;
                 clientY = e.clientY;
+            }
+            
+            if (resizingWindow && resizeDirection) {
+                const deltaX = clientX - startX;
+                const deltaY = clientY - startY;
+                
+                let newWidth = startWidth;
+                let newHeight = startHeight;
+                let newLeft = startLeft;
+                let newTop = startTop;
+                
+                if (resizeDirection.includes('e')) {
+                    newWidth = Math.max(400, startWidth + deltaX);
+                }
+                if (resizeDirection.includes('w')) {
+                    newWidth = Math.max(400, startWidth - deltaX);
+                    newLeft = startLeft + deltaX;
+                }
+                if (resizeDirection.includes('s')) {
+                    newHeight = Math.max(500, startHeight + deltaY);
+                }
+                if (resizeDirection.includes('n')) {
+                    newHeight = Math.max(500, startHeight - deltaY);
+                    newTop = startTop + deltaY;
+                }
+                
+                // Apply max constraints
+                newWidth = Math.min(newWidth, window.innerWidth - 20);
+                newHeight = Math.min(newHeight, window.innerHeight - 20);
+                
+                resizingWindow.style.width = newWidth + 'px';
+                resizingWindow.style.height = newHeight + 'px';
+                if (resizeDirection.includes('w')) {
+                    resizingWindow.style.left = newLeft + 'px';
+                }
+                if (resizeDirection.includes('n')) {
+                    resizingWindow.style.top = newTop + 'px';
+                }
             }
             
             if (draggedWindow) {
@@ -834,6 +969,11 @@
         document.addEventListener('touchmove', handleMove, { passive: false });
         
         function handleEnd(e) {
+            if (resizingWindow) {
+                resizingWindow = null;
+                resizeDirection = null;
+            }
+            
             if (draggedWindow) {
                 draggedWindow.classList.remove('dragging');
                 draggedWindow = null;
